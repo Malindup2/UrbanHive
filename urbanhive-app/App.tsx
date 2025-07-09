@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SplashScreen, HomeScreen, GetStartedScreen } from './src/screens';
+import { SplashScreen, MainScreen } from './src/screens';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <GetStartedScreen />
+      <MainScreen />
     </>
   );
 }

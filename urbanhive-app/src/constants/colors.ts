@@ -4,6 +4,7 @@ export const Colors = {
     1: '#0052FF', // Primary-1 (Blue)
     2: '#E0E8FF', // Primary-2 (Light Blue/Lavender)
     3: '#F5F7FF', // Primary-3 (Very Light Blue)
+    4: '#D1DBFF', // Primary-4 (More Intense Light Blue)
   },
   
   // Black/Gray Colors
