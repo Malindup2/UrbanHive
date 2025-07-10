@@ -28,20 +28,20 @@ interface Property {
 const featuredProperties: Property[] = [
   {
     id: '1',
-    title: 'Merialla Villa',
-    location: 'New York, US',
-    price: '$12219',
+    title: 'Prime Lands Luxury Villa',
+    location: 'Colombo 07, Sri Lanka',
+    price: 'LKR 23M',
     rating: 4.8,
-    image: require('../assets/getStarted.jpg'), 
+    image: require('../assets/a1.jpg'), 
     type: 'villa',
   },
   {
     id: '2',
-    title: 'Modernica Apartment',
-    location: 'New York, US',
-    price: '$22452',
+    title: 'Ariyana Resort Apartment',
+    location: 'Kandy, Sri Lanka',
+    price: 'LKR 18M',
     rating: 4.9,
-    image: require('../assets/image.png'), // Using existing image
+    image: require('../assets/a2.jpg'),
     type: 'apartment',
   },
 ];
@@ -49,38 +49,38 @@ const featuredProperties: Property[] = [
 const recommendedProperties: Property[] = [
   {
     id: '3',
-    title: 'La Grand Maison',
-    location: 'Tokyo, Japan',
-    price: '$12219',
+    title: 'Prime Lands Garden Residence',
+    location: 'Galle, Sri Lanka',
+    price: 'LKR 15M',
     rating: 4.8,
-    image: require('../assets/getStarted.jpg'),
+    image: require('../assets/a3.jpg'),
     type: 'house',
   },
   {
     id: '4',
-    title: 'La Grand Maison',
-    location: 'Tokyo, Japan',
-    price: '$1424',
-    rating: 4.8,
-    image: require('../assets/logIn.jpg'),
+    title: 'Ariyana Resort Studio',
+    location: 'Negombo, Sri Lanka',
+    price: 'LKR 8M',
+    rating: 4.7,
+    image: require('../assets/a4.jpg'),
     type: 'apartment',
   },
   {
     id: '5',
-    title: 'La Grand Maison',
-    location: 'Tokyo, Japan',
-    price: '$17821',
-    rating: 4.8,
-    image: require('../assets/getStarted.jpg'),
+    title: 'Prime Lands Executive Villa',
+    location: 'Mount Lavinia, Sri Lanka',
+    price: 'LKR 35M',
+    rating: 4.9,
+    image: require('../assets/a5.jpg'),
     type: 'house',
   },
   {
     id: '6',
-    title: 'La Grand Maison',
-    location: 'Tokyo, Japan',
-    price: '$21469',
+    title: 'Ariyana Resort Penthouse',
+    location: 'Bentota, Sri Lanka',
+    price: 'LKR 42M',
     rating: 4.8,
-    image: require('../assets/image.png'),
+    image: require('../assets/a6.jpg'),
     type: 'villa',
   },
 ];
@@ -133,7 +133,7 @@ export default function HomeScreen() {
             </View>
             <View style={styles.greetingContainer}>
               <Text style={styles.greeting}>Good Morning</Text>
-              <Text style={styles.userName}>Adrian Hajdin</Text>
+              <Text style={styles.userName}>Kasun Perera</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.notificationButton}>
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   greetingContainer: {
-    flex: 1,
+    // Removed flex: 1 to prevent taking excessive width
   },
   greeting: {
     fontSize: 14,
@@ -264,6 +264,9 @@ const styles = StyleSheet.create({
   },
   notificationButton: {
     padding: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   searchContainer: {
     flexDirection: 'row',
