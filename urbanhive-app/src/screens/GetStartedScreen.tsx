@@ -5,12 +5,11 @@ import Colors from '../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
-export default function GetStartedScreen() {
-  const handleSignIn = () => {
-    // Navigate to sign in screen
-    console.log('Navigate to Sign In');
-  };
+interface GetStartedScreenProps {
+  onSignInPress: () => void;
+}
 
+export default function GetStartedScreen({ onSignInPress }: GetStartedScreenProps) {
   const handleSignUp = () => {
     // Navigate to sign up screen
     console.log('Navigate to Sign Up');
@@ -41,7 +40,7 @@ export default function GetStartedScreen() {
         </View>
         
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
+          <TouchableOpacity style={styles.signInButton} onPress={onSignInPress}>
             <Text style={styles.signInButtonText}>Sign In</Text>
           </TouchableOpacity>
           
