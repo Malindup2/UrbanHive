@@ -83,6 +83,15 @@ const recommendedProperties: Property[] = [
     image: require('../assets/a6.jpg'),
     type: 'villa',
   },
+  {
+    id: '7',
+    title: 'Prime Lands Ocean View',
+    location: 'Hikkaduwa, Sri Lanka',
+    price: 'LKR 28M',
+    rating: 4.9,
+    image: require('../assets/a7.jpg'),
+    type: 'apartment',
+  },
 ];
 
 const categories = [
@@ -129,7 +138,7 @@ export default function HomeScreen() {
         <View style={styles.header}>
           <View style={styles.userInfo}>
             <View style={styles.avatar}>
-              <Text style={styles.avatarText}>AH</Text>
+              <Text style={styles.avatarText}>KP</Text>
             </View>
             <View style={styles.greetingContainer}>
               <Text style={styles.greeting}>Good Morning</Text>
@@ -321,39 +330,54 @@ const styles = StyleSheet.create({
   propertyCard: {
     backgroundColor: Colors.white,
     borderRadius: 16,
-    overflow: 'hidden',
-    marginRight: 16,
-    shadowColor: Colors.black[1],
+    // Removed overflow: 'hidden' to allow shadows to show on iOS
+    // iOS Shadows
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 8,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOpacity: 0.25,
+    shadowRadius: 16,
+    // Android Shadow
+    elevation: 12,
+    // Border for extra definition
+    borderWidth: 0.5,
+    borderColor: 'rgba(0, 0, 0, 0.08)',
   },
   largeCard: {
     width: width * 0.7,
+    marginRight: 16,
   },
   smallCard: {
-    width: (width - 60) / 2,
+    width: '100%',
     marginBottom: 16,
   },
   propertyImage: {
     width: '100%',
     height: 180,
     resizeMode: 'cover',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
   },
   ratingBadge: {
     position: 'absolute',
     top: 12,
     right: 12,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
   },
   ratingText: {
     marginLeft: 4,
@@ -410,8 +434,6 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   recommendedGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
 });
