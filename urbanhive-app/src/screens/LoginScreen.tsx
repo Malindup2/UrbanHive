@@ -119,7 +119,7 @@ export default function LoginScreen({ onLoginSuccess, onBackToGetStarted }: Logi
               disabled={isLoading}
             >
               <Text style={styles.loginButtonText}>
-                {isLoading ? 'Signing In...' : 'Sign In'}
+                Sign In
               </Text>
             </TouchableOpacity>
 
