@@ -1,145 +1,166 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, SafeAreaView, StatusBar } from 'react-native';
+import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '../constants/colors';
 
 export default function ProfileScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Profile</Text>
-        <Text style={styles.headerSubtitle}>Manage your account</Text>
-      </View>
-      
-      <ScrollView style={styles.content}>
-        <View style={styles.profileCard}>
-          <View style={styles.profileAvatar}>
-            <Text style={styles.avatarText}>👤</Text>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={Colors.white} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.profileHeader}>
+          <View style={styles.avatarWrapper}>
+            <Image
+              source={require('../assets/a1.jpg')}
+              style={styles.avatar}
+            />
+            <TouchableOpacity style={styles.editIcon}>
+              <MaterialIcons name="edit" size={22} color={Colors.primary[1]} />
+            </TouchableOpacity>
           </View>
-          <Text style={styles.profileName}>John Doe</Text>
-          <Text style={styles.profileEmail}>john.doe@example.com</Text>
+          <Text style={styles.profileName}>Adrian | JSM</Text>
+          <Text style={styles.profileEmail}>adrian.jsm@email.com</Text>
         </View>
-        
         <View style={styles.menuSection}>
           <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuIcon}>🏠</Text>
-            <Text style={styles.menuText}>My Properties</Text>
-            <Text style={styles.menuArrow}>›</Text>
+            <MaterialCommunityIcons name="calendar-check" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>My Bookings</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
           </TouchableOpacity>
-          
           <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuIcon}>❤️</Text>
-            <Text style={styles.menuText}>Favorites</Text>
-            <Text style={styles.menuArrow}>›</Text>
+            <MaterialCommunityIcons name="credit-card" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>Payments</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
           </TouchableOpacity>
-          
           <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuIcon}>⚙️</Text>
-            <Text style={styles.menuText}>Settings</Text>
-            <Text style={styles.menuArrow}>›</Text>
+            <MaterialIcons name="person-outline" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>Profile</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <MaterialIcons name="security" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>Security</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <MaterialIcons name="language" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>Language</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <MaterialIcons name="help-outline" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>Help Center</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem}>
+            <MaterialCommunityIcons name="account-plus-outline" size={22} color={Colors.primary[1]} style={styles.menuIcon} />
+            <Text style={styles.menuText}>Invite Friends</Text>
+            <MaterialIcons name="chevron-right" size={22} color={Colors.text.tertiary} />
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.logoutButton}>
+          <MaterialIcons name="logout" size={22} color={Colors.white} />
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
-  },
-  header: {
-    backgroundColor: Colors.primary[1],
-    paddingTop: 50,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: Colors.white,
-    marginBottom: 5,
-  },
-  headerSubtitle: {
-    fontSize: 16,
-    color: Colors.primary[2],
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 20,
-  },
-  profileCard: {
     backgroundColor: Colors.white,
-    borderRadius: 15,
-    padding: 30,
+  },
+  profileHeader: {
     alignItems: 'center',
-    marginBottom: 20,
+    paddingTop: 40,
+    paddingBottom: 24,
+    backgroundColor: Colors.white,
+  },
+  avatarWrapper: {
+    position: 'relative',
+    marginBottom: 12,
+  },
+  avatar: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: Colors.primary[1],
+  },
+  editIcon: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    backgroundColor: Colors.white,
+    borderRadius: 16,
+    padding: 4,
     shadowColor: Colors.black[1],
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  profileAvatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: Colors.primary[2],
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  avatarText: {
-    fontSize: 40,
+    shadowRadius: 2,
+    elevation: 2,
   },
   profileName: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '700',
     color: Colors.text.primary,
-    marginBottom: 5,
+    marginBottom: 2,
+    textAlign: 'center',
   },
   profileEmail: {
-    fontSize: 16,
+    fontSize: 15,
     color: Colors.text.secondary,
+    marginBottom: 8,
+    textAlign: 'center',
   },
   menuSection: {
     backgroundColor: Colors.white,
-    borderRadius: 15,
-    overflow: 'hidden',
+    borderRadius: 16,
+    marginHorizontal: 20,
+    marginBottom: 18,
+    paddingVertical: 8,
+    paddingHorizontal: 0,
     shadowColor: Colors.black[1],
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 2,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 18,
-    paddingHorizontal: 20,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.primary[3],
+    borderBottomColor: Colors.background,
   },
   menuIcon: {
-    fontSize: 20,
-    marginRight: 15,
+    marginRight: 18,
   },
   menuText: {
     flex: 1,
     fontSize: 16,
-    fontWeight: '500',
     color: Colors.text.primary,
+    fontWeight: '500',
   },
-  menuArrow: {
-    fontSize: 20,
-    color: Colors.text.tertiary,
+  logoutButton: {
+    width: 200,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginBottom: 30,
+    paddingVertical: 14,
+    borderRadius: 26,
+    backgroundColor: '#ff4747ff',
+    alignContent: 'center',
+    shadowColor: Colors.black[1],
+  },
+  logoutText: {
+    fontSize: 16,
+    color: Colors.white,
+    fontWeight: '600',
+    marginLeft: 10,
   },
 });

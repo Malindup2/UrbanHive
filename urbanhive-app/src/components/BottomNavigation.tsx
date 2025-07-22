@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   navigationBar: {
     flexDirection: 'row',
     backgroundColor: Colors.white,
-    borderRadius: 25,
+    borderRadius: 40,
     paddingVertical: 8,
     paddingHorizontal: 20,
     shadowColor: Colors.black[1],
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 20,
+    borderRadius: 40,
     minWidth: 80,
   },
   activeTabButton: {

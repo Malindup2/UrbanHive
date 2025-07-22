@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,9 @@ import {
   Dimensions,
   SafeAreaView,
   StatusBar,
+  TextInput,
 } from 'react-native';
+
 import { MaterialIcons } from '@expo/vector-icons';
 import Colors from '../constants/colors';
 
@@ -102,6 +104,7 @@ const categories = [
 ];
 
 export default function HomeScreen() {
+  const [searchQuery, setSearchQuery] = useState('');
   const renderPropertyCard = (property: Property, isLarge: boolean = false) => (
     <TouchableOpacity
       key={property.id}
@@ -154,7 +157,15 @@ export default function HomeScreen() {
         <View style={styles.searchContainer}>
           <View style={styles.searchBar}>
             <MaterialIcons name="search" size={20} color={Colors.text.tertiary} />
-            <Text style={styles.searchPlaceholder}>Search something</Text>
+            <TextInput
+              style={styles.searchInput}
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+              placeholder="Search something"
+              placeholderTextColor={Colors.text.tertiary}
+              autoCapitalize="none"
+              returnKeyType="search"
+            />
           </View>
           <TouchableOpacity style={styles.filterButton}>
             <MaterialIcons name="tune" size={20} color={Colors.text.primary} />
@@ -293,10 +304,14 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     marginRight: 12,
   },
-  searchPlaceholder: {
+  searchInput: {
+    flex: 1,
     marginLeft: 8,
     fontSize: 16,
-    color: Colors.text.tertiary,
+    color: Colors.text.primary,
+    backgroundColor: 'transparent',
+    padding: 0,
+    borderWidth: 0,
   },
   filterButton: {
     backgroundColor: Colors.background,
@@ -305,7 +320,7 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingHorizontal: 20,
-    marginBottom: 30,
+    marginBottom: 40,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -337,10 +352,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 8,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 16,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
     // Android Shadow
-    elevation: 12,
+    elevation: 5,
     // Border for extra definition
     borderWidth: 0.5,
     borderColor: 'rgba(0, 0, 0, 0.08)',
@@ -348,6 +363,7 @@ const styles = StyleSheet.create({
   largeCard: {
     width: width * 0.7,
     marginRight: 16,
+    marginBottom: 18, 
   },
   smallCard: {
     width: '100%',
