@@ -1,12 +1,16 @@
+
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { BottomNavigation } from '../components';
 import { HomeScreen, ExploreScreen, ProfileScreen } from './';
+import BookingsScreen from './BookingsScreen';
 import Colors from '../constants/colors';
 
+
+type TabName = 'Home' | 'Explore' | 'Bookings' | 'Profile';
 export default function MainScreen() {
-  const [activeTab, setActiveTab] = useState<'Home' | 'Explore' | 'Profile'>('Home');
+  const [activeTab, setActiveTab] = useState<TabName>('Home');
 
   const renderScreen = () => {
     switch (activeTab) {
@@ -14,6 +18,8 @@ export default function MainScreen() {
         return <HomeScreen />;
       case 'Explore':
         return <ExploreScreen />;
+      case 'Bookings':
+        return <BookingsScreen />;
       case 'Profile':
         return <ProfileScreen />;
       default:
@@ -26,8 +32,8 @@ export default function MainScreen() {
       <StatusBar style="dark" />
       {renderScreen()}
       <BottomNavigation 
-        activeTab={activeTab} 
-        onTabPress={setActiveTab} 
+        activeTab={activeTab as any} 
+        onTabPress={setActiveTab as any} 
       />
     </View>
   );

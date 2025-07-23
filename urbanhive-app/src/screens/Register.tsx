@@ -12,7 +12,15 @@ import {
 } from 'react-native';
 import Colors from '../constants/colors';
 
-export default function Register({ navigation }) {
+import type { StackNavigationProp } from '@react-navigation/stack';
+
+type RegisterScreenNavigationProp = StackNavigationProp<any>;
+
+interface RegisterProps {
+  navigation: RegisterScreenNavigationProp;
+}
+
+export default function Register({ navigation }: RegisterProps) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [mobile, setMobile] = useState('');
