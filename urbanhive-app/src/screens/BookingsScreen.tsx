@@ -82,16 +82,19 @@ export default function BookingsScreen() {
   );
 
   const renderPropertyCard = ({ item }: { item: Booking }) => (
-    <View style={styles.propertyCard}>
+    <TouchableOpacity style={styles.propertyCard}>
       <Image source={item.property.image} style={styles.propertyImage} />
       <View style={styles.propertyInfo}>
         <Text style={styles.propertyTitle}>{item.property.title}</Text>
         <Text style={styles.propertyLocation}>{item.property.address}</Text>
         <View style={styles.priceContainer}>
-          <Text style={styles.propertyPrice}>${item.property.price}/mo</Text>
+          <Text style={styles.propertyPrice}>LKR {item.property.price}/mo</Text>
+          <TouchableOpacity style={styles.favoriteButton}>
+            <MaterialIcons name="favorite-border" size={20} color={Colors.text.tertiary} />
+          </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -103,6 +106,7 @@ export default function BookingsScreen() {
       <View style={styles.capsuleRow}>
         {statusCapsules.map(renderCapsule)}
       </View>
+      <ScrollView>
       <View style={styles.recommendedGrid}>
         {filteredBookings.length === 0 ? (
           <Text style={styles.emptyText}>No bookings found.</Text>
@@ -110,6 +114,7 @@ export default function BookingsScreen() {
           filteredBookings.map((item) => renderPropertyCard({ item }))
         )}
       </View>
+      </ScrollView>
     </View>
   );
 }
@@ -176,6 +181,7 @@ const styles = StyleSheet.create({
   propertyCard: {
     backgroundColor: Colors.white,
     borderRadius: 16,
+    // iOS Shadows
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -183,11 +189,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.12,
     shadowRadius: 8,
+    // Android Shadow
     elevation: 5,
+    // Border for extra definition
     borderWidth: 0.5,
     borderColor: 'rgba(0, 0, 0, 0.08)',
     marginBottom: 16,
-    overflow: 'hidden',
   },
   propertyImage: {
     width: '100%',
@@ -219,6 +226,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     color: Colors.primary[1],
+  },
+  favoriteButton: {
+    padding: 4,
   },
   recommendedGrid: {
     flexDirection: 'column',
